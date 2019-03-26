@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _3252019.data;
+using _3252019.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,29 @@ namespace _3252019.Controllers
 {
     public class HomeController : Controller
     {
+        PeopleManager mgr = new PeopleManager(Properties.Settings.Default.ConStr);
+
         public ActionResult Index()
         {
-            return View();
+            List<Person> people = mgr.GetPeople();
+            return View(people);
         }
 
-        public ActionResult About()
+        public ActionResult AddPerson()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult SubmitPerson(List<Person> people)
         {
-            ViewBag.Message = "Your contact page.";
+            foreach(Person p in people)
+            {
+                mgr.SubmitPeople(p);
+            }
 
-            return View();
+            return Redirect("/home/index");
         }
+
     }
 }

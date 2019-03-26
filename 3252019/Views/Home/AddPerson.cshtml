@@ -1,0 +1,17 @@
+﻿
+
+<div>
+    <button id="AddPerson" class="btn btn-danger">Add Another Person</button>
+    <form method="post" action="/home/submitperson">
+        <div id="FormInputs">
+            <input type="text" placeholder="First Name" class="form-control" name="people[0].FirstName " />
+            <input type="text" placeholder="Last Name" class="form-control" name="people[0].LastName" />
+            <input type="text" placeholder="Age" name="people[0].Age" class="form-control"/>
+        </div>
+        <button class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+@section scripts {
+    <script src="/Scripts/index.js"></script>
+}
