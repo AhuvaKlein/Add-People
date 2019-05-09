@@ -41,6 +41,8 @@ namespace _3252019.data
                     Age = (int)reader["Age"]
                 });
             }
+            conn.Close();
+            conn.Dispose();
             return people;
         } 
 
